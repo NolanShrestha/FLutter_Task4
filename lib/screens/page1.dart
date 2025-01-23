@@ -5,6 +5,7 @@ import 'package:task4/models/users.dart';
 import 'package:task4/screens/page2.dart';
 import 'package:task4/widgets/BottomNavBar.dart';
 import 'package:task4/database/DatabaseHelper.dart';
+import 'posts.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -95,7 +96,13 @@ class _Page1State extends State<Page1> {
                 final user = users[index];
                 return ListTile(
                   onTap: () {
-                    print("Users: ${user.name}");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            Posts(userId: user.id, userName: user.name),
+                      ),
+                    );
                   },
                   title: Text(user.name),
                   subtitle: Text(user.email),
