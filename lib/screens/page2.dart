@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task4/models/users.dart';
 import 'package:task4/database/DatabaseHelper.dart';
+import 'package:task4/screens/posts.dart';
 
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
@@ -30,11 +31,23 @@ class Page2 extends StatelessWidget {
               itemBuilder: (context, index) {
                 final user = users[index];
                 return ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Posts(
+                          userId: user.id,
+                          userName: user.name,
+                        ),
+                      ),
+                    );
+                  },
                   title: Text(user.name),
                   subtitle: Text(user.email),
                   leading: CircleAvatar(
                     child: Text(user.name[0]),
                   ),
+                  trailing: const Icon(Icons.save_outlined),
                 );
               },
             );
