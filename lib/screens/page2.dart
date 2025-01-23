@@ -41,6 +41,12 @@ class Page2 extends StatelessWidget {
           }
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _dbHelper.printUsersTable();
+        },
+        child: const Icon(Icons.print),
+      ),
     );
   }
 }

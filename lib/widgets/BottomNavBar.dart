@@ -36,11 +36,9 @@ class BottomNavBar extends StatelessWidget {
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.wifi_find_rounded),
-              label: "Page 1",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.laptop_chromebook_outlined),
-              label: "Page 2",
             ),
           ],
         ),
