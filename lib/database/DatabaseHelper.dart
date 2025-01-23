@@ -1,5 +1,5 @@
 import 'package:sqflite/sqflite.dart';
-import '../models/users.dart';
+import 'package:task4/models/users.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._();

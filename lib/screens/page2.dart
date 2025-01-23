@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task4/models/users.dart';
-import 'package:task4/database_helper.dart';
+import 'package:task4/database/DatabaseHelper.dart';
 
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class Page2 extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Saved Users'),
+        title: const Text('Fetching Users From Database'),
         centerTitle: true,
       ),
       body: FutureBuilder<List<User>>(

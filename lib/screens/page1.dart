@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:task4/models/users.dart';
 import 'package:task4/screens/page2.dart';
 import 'package:task4/widgets/BottomNavBar.dart';
-import 'package:task4/database_helper.dart';
+import 'package:task4/database/DatabaseHelper.dart';
 
 class MyApp extends StatelessWidget {
   @override
