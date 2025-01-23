@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:task4/models/users.dart';
 import 'package:task4/screens/page2.dart';
 import 'package:task4/widgets/BottomNavBar.dart';
+import 'package:task4/database_helper.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -23,6 +24,7 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   late Future<List<User>> _users;
   int _selectedIndex = 0;
+  final DatabaseHelper _dbHelper = DatabaseHelper();
 
   @override
   void initState() {
@@ -42,15 +44,29 @@ class _Page1State extends State<Page1> {
     }
   }
 
+  Future<void> _saveUserToDatabase(User user) async {
+    try {
+      await _dbHelper.insertUser(user);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('${user.name} saved to database')),
+      );
+    } catch (e) {
+      print("Error saving user: $e");
+    }
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-
     switch (index) {
       case 0:
+        break;
+      case 1:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Page2()));
+          context,
+          MaterialPageRoute(builder: (context) => const Page2()),
+        );
         break;
     }
   }
@@ -78,19 +94,20 @@ class _Page1State extends State<Page1> {
               itemBuilder: (context, index) {
                 final user = users[index];
                 return ListTile(
-                  onTap: () => print("Pressed"),
+                  onTap: () {
+                    print("Users: ${user.name}");
+                  },
                   title: Text(user.name),
                   subtitle: Text(user.email),
                   leading: CircleAvatar(
                     child: Text(user.name[0]),
                   ),
                   trailing: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          print("Users: ${user.name}");
-                        });
-                      },
-                      icon: const Icon(Icons.favorite_border_rounded)),
+                    onPressed: () {
+                      _saveUserToDatabase(user);
+                    },
+                    icon: const Icon(Icons.favorite_border_rounded),
+                  ),
                 );
               },
             );

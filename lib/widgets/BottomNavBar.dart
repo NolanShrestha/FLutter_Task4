@@ -28,6 +28,7 @@ class BottomNavBar extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30),
         child: BottomNavigationBar(
+          currentIndex: selectedIndex,
           elevation: 0,
           showSelectedLabels: false,
           showUnselectedLabels: false,
@@ -35,11 +36,11 @@ class BottomNavBar extends StatelessWidget {
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.wifi_find_rounded),
-              label: "",
+              label: "Page 1",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.laptop_chromebook_outlined),
-              label: "",
+              label: "Page 2",
             ),
           ],
         ),
