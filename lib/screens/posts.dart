@@ -50,51 +50,24 @@ class Posts extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Icon(Icons.article_outlined, size: 40),
-                            const SizedBox(width: 10),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    post['title'],
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge
-                                        ?.copyWith(
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Text(
-                                    post['body'],
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium,
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            'Post #${index + 1}',
-                            style: Theme.of(context).textTheme.bodySmall,
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.all(15.0),
+                    leading: const CircleAvatar(
+                      // Light background color
+                      child: Icon(
+                        Icons.article_outlined,
+                      ),
+                    ),
+                    title: Text(
+                      post['title'],
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
                           ),
-                        ),
-                      ],
+                    ),
+                    subtitle: Text(
+                      post['body'],
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 );
