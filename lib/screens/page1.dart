@@ -6,6 +6,7 @@ import 'package:task4/screens/page2.dart';
 import 'package:task4/widgets/BottomNavBar.dart';
 import 'package:task4/database/DatabaseHelper.dart';
 import 'posts.dart';
+import 'package:task4/widgets/UserListTile.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -94,7 +95,8 @@ class _Page1State extends State<Page1> {
               itemCount: users.length,
               itemBuilder: (context, index) {
                 final user = users[index];
-                return ListTile(
+                return UserListTile(
+                  user: user,
                   onTap: () {
                     Navigator.push(
                       context,
@@ -104,16 +106,11 @@ class _Page1State extends State<Page1> {
                       ),
                     );
                   },
-                  title: Text(user.name),
-                  subtitle: Text(user.email),
-                  leading: CircleAvatar(
-                    child: Text(user.name[0]),
-                  ),
                   trailing: IconButton(
+                    icon: const Icon(Icons.save),
                     onPressed: () {
                       _saveUserToDatabase(user);
                     },
-                    icon: const Icon(Icons.favorite_border_rounded),
                   ),
                 );
               },
