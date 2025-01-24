@@ -42,7 +42,6 @@ class DatabaseHelper {
     return usersMap.map((user) => User.fromMap(user)).toList();
   }
 
-  // Debugging method to print the entire table
   Future<void> printUsersTable() async {
     final db = await database;
     final List<Map<String, dynamic>> tableData = await db.query('users');
